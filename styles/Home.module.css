@@ -65,6 +65,20 @@
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
+.link {
+  background: #fafafa;
+  color: #0070f3;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
 .grid {
   display: flex;
   align-items: center;
@@ -120,7 +134,8 @@
   .footer {
     border-color: #222;
   }
-  .code {
+  .code,
+  .link {
     background: #111;
   }
   .logo img {

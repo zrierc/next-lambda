@@ -1,0 +1,9 @@
+next-serverless:
+  component: '@sls-next/serverless-component@3.7.0'
+  input:
+    # Set runtime version to nodeJS v16
+    runtime: 'nodejs16.x'
+    # Change bucket name
+    bucketName: static-next-serverless
+    # Default bucket region (default: us-east-1)
+    bucketRegion: ap-southeast-1

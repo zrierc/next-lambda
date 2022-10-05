@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Deploy NextJS App to lambda using SAM and lambda-web-adapter layer
+
+Globals:
+  Function:
+    Timeout: 180
+    Tags:
+      APP_ENV: Prod-Web-adapter-layer
+      APP_VERSION: v1.0.0
+      AUTHOR: fajri-anak-magang
+
+Resources:
+  NextjsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: app/
+      MemorySize: 512
+      Handler: run.sh
+      Runtime: nodejs16.x
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          AWS_LAMBDA_EXEC_WRAPPER: /opt/bootstrap
+          RUST_LOG: info
+          PORT: '3000'
+      Layers:
+        - !Sub arn:aws:lambda:${AWS::Region}:753240598075:layer:LambdaAdapterLayerX86:5
+      Events:
+        Root:
+          Type: HttpApi
+          Properties:
+            Path: /
+            Method: ANY
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+    Metadata:
+      BuildMethod: makefile
+
+Outputs:
+  NextjsFunctionURL:
+    Description: 'API Gateway endpoint URL for Next.js'
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/'

@@ -9,13 +9,12 @@ Globals:
     Tags:
       APP_ENV: Prod-Web-adapter-layer
       APP_VERSION: v1.0.0
-      AUTHOR: fajri-anak-magang
 
 Resources:
   NextjsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: app/
+      CodeUri: ./
       MemorySize: 512
       Handler: run.sh
       Runtime: nodejs16.x

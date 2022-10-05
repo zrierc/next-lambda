@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Hosted on [AWS Lambda](https://aws.amazon.com/lambda/), see [deployment section](#deploy-on-aws-lambda) for more details.
 
 ## Getting Started
 
@@ -18,6 +18,15 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+## Deploy on AWS Lambda
+
+This project is intended to be deployed to [AWS Lambda](https://aws.amazon.com/lambda/). There are several ways to deploy NextJS to AWS Lambda.
+
+- The first and simple method is using [serverless-nextjs](https://serverless-nextjs.com/) powered by [Serverless Framework](https://www.serverless.com/).
+- Another method is using [aws-lambda-web-adapter](https://github.com/awslabs/aws-lambda-web-adapter) with [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html).
+
+Check out each branch of this repository to learn more about each deployment.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -26,9 +35,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

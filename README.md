@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Hosted on [AWS Lambda](https://aws.amazon.com/lambda/), see [deployment section](#deploy-on-aws-lambda) for more details.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Hosted on [AWS Lambda](https://aws.amazon.com/lambda/) using [serverless-nextjs](https://serverless-nextjs.com/), see [deployment section](#deploy-on-aws-lambda-using-serverless-nextjs) for guidance.
 
 ## Getting Started
 
@@ -18,20 +18,42 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Deploy on AWS Lambda
+## Deploy on AWS Lambda using Serverless-NextJS
 
-This project is intended to be deployed to [AWS Lambda](https://aws.amazon.com/lambda/). There are several ways to deploy NextJS to AWS Lambda.
+### Pre-requisite
 
-- The first and simple method is using [serverless-nextjs](https://serverless-nextjs.com/) powered by [Serverless Framework](https://www.serverless.com/).
-- Another method is using [aws-lambda-web-adapter](https://github.com/awslabs/aws-lambda-web-adapter) with [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html).
+- NodeJS with NPM or yarn that already installed.
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions).
+- [Serverless CLI](https://www.serverless.com/framework/docs/getting-started).
 
-Check out each branch of this repository to learn more about each deployment.
+### Deployment
 
-## Learn More
+- Setup [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/).
+- Create or clone NextJS project.
+- Create a `serverless.yml` file at the root of your project and add your NextJS application as show below:
 
-To learn more about Next.js, take a look at the following resources:
+  ```yaml
+  # serverless.yml
+
+  nextApp:
+    component: '@sls-next/serverless-component@3.7.0'
+  ```
+
+  > If you want to customize resources like a custom domain name or choose a runtime version you can check [`inputs` references](https://serverless-nextjs.com/docs/inputs).
+
+- Deploy your app by executing command below from you project root:
+  ```bash
+  serverless
+  ```
+
+## References
+
+If you get an error during the deployment proccess or want to learn more about serverless framework, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Serverless-NextJS Documentation](https://serverless-nextjs.com/docs/) - learn about architecture.
+- [Serverless-NextJS FAQ](https://serverless-nextjs.com/docs/faq) - best place to solve common issues.
+- [Serverless Framework](https://www.serverless.com/framework/docs) - core concept behind Serverless-NextJS.
+- [AWS Lambda Documentantion](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you have questions or found any problem let me know by opening issue - your feedback and contributions are welcome!

@@ -44,7 +44,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
   module.exports = nextConfig;
   ```
 
-- Inside your `Dockerfile` and add one line to copy Lambda Web Adapter binary to /opt/extensions inside your container.
+- Inside your `Dockerfile` add one line to copy Lambda Web Adapter binary to /opt/extensions inside your container.
 
   ```Dockerfile
   ...
@@ -69,14 +69,23 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
   > If you want to customize or adding another resources, you can check [`AWS SAM` references](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-specification.html) or you can check out [example nextjs application](https://github.com/awslabs/aws-lambda-web-adapter/tree/main/examples/nextjs) that provided by AWS Lambda Web Adapter repository.
 
-- To build and deploy your application for the first time, run the following in your shell:
+- Build your application by executing this commands:
 
   ```bash
+  aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+
   sam build
+  ```
+
+  This command compiles the application, create image, login to AWS ECR and prepares a deployment package in the `.aws-sam` sub-directory.
+
+- To deploy your application for the first time, run the following in your shell:
+
+  ```bash
   sam deploy --guided
   ```
 
-  Please check out [the references section](#references) below for more detailed information.
+  > With AWS Serverless Application Model (SAM), you can also invoke or test your lambda function locally. See [AWS SAM documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-test-and-debug.html) to learn more.
 
 ## References
 
